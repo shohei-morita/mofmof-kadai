@@ -18,15 +18,23 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    @property = Property.find(params[:id])
   end
 
   def edit
+    @property = Property.find(params[:id])
   end
 
   private
 
   def property_params
-    params.require(:property).permit(:name, :cost, :address, :age, :note,
-                                     nearest_station_attributes: %i(line station minute_walk))
+    params.require(:property).permit(
+      :name,
+      :cost,
+      :address,
+      :age,
+      :note,
+      nearest_stations_attributes: [:line, :station, :minute_walk]
+  )
   end
 end

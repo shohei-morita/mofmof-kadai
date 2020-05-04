@@ -1,2 +1,14 @@
-<h1>Properties#show</h1>
-<p>Find me in app/views/properties/show.html.erb</p>
+<h1>閲覧</h1>
+
+<p>物件名:<%= @property.name %></p>
+<p>賃料:<%= @property.cost %>円</p>
+<p>住所:<%= @property.address %></p>
+<p>築年数 <%= @property.age %></p>
+<p>備考 <%= @property.note %></p>
+
+<h2>最寄駅</h2>
+<% @property.nearest_stations.each do |nearest_station| %>
+<p>路線名 <%= nearest_station.line %></p>
+<p>駅名　<%= nearest_station.station %></p>
+<p>徒歩分数 <%= nearest_station.minute_walk %></p>
+<% end %>
