@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+  before_action :set_property, only: %i(show edit update destroy)
+
   def index
     @properties = Property.all
   end
@@ -17,16 +19,11 @@ class PropertiesController < ApplicationController
     end
   end
 
-  def show
-    @property = Property.find(params[:id])
-  end
+  def show; end
 
-  def edit
-    @property = Property.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @property = Property.find(params[:id])
     if @property.update(property_params)
       redirect_to properties_path
     else
@@ -35,7 +32,6 @@ class PropertiesController < ApplicationController
   end
 
   def destroy
-    @property = Property.find(params[:id])
     @property.destroy
     redirect_to properties_path
   end
@@ -51,5 +47,9 @@ class PropertiesController < ApplicationController
       :note,
       nearest_stations_attributes: [:line, :station, :minute_walk]
   )
+  end
+
+  def set_property
+    @property = Property.find(params[:id])
   end
 end
