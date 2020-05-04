@@ -1,2 +1,20 @@
-<h1>Properties#new</h1>
-<p>Find me in app/views/properties/new.html.erb</p>
+<h1>物件登録</h1>
+
+<%= form_with(model: @property, local: true) do |f| %>
+
+<%= form.label :'物件名' %>
+<%= form.text_field :name %>
+
+<%= form.label :'賃料' %>
+<%= form.text_field :cost %>
+
+<%= form.label :'住所' %>
+<%= form.text_field :address %>
+
+<%= form.label :'築年数' %>
+<%= form.text_field :age %>
+
+<%= form.label :'備考' %>
+<%= form.text_area :note %>
+
+<% end %>
