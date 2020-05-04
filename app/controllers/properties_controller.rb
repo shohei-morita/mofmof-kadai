@@ -34,6 +34,12 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def destroy
+    @property = Property.find(params[:id])
+    @property.destroy
+    redirect_to properties_path
+  end
+
   private
 
   def property_params
