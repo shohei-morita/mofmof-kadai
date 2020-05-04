@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_081128) do
+ActiveRecord::Schema.define(version: 2020_05_04_092605) do
 
   create_table "nearest_stations", force: :cascade do |t|
     t.string "line"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_081128) do
 
   create_table "properties", force: :cascade do |t|
     t.string "name"
-    t.integer "string"
+    t.integer "cost"
     t.string "address"
     t.integer "age"
     t.text "note"
