@@ -6,6 +6,8 @@
 <p>築年数 <%= @property.age %></p>
 <p>備考 <%= @property.note %></p>
 
+<p class='border'></p>
+
 <% @property.nearest_stations.each_with_index do |nearest_station, num| %>
   <h2>最寄駅<%= num + 1 %></h2>
   <p>路線名 <%= nearest_station.line %></p>
