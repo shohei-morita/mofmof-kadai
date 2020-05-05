@@ -45,6 +45,9 @@
       <%= f.text_field :minute_walk %>
     </div>
     <% end %>
-
-<%= f.submit '登録 ' %>
+<% if action_name == 'new' %>
+<%= f.submit '登録する' %>
+<% else %>
+<%= f.submit '更新する' %>
+<% end %>
 <% end %>
