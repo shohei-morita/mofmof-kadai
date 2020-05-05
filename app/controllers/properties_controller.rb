@@ -7,7 +7,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    @property.nearest_stations.build
+    2.times { @property.nearest_stations.build }
   end
 
   def create
@@ -21,10 +21,15 @@ class PropertiesController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    last_data = @property.nearest_stations.last
+    unless last_data.line.blank? && last_data.station.blank? && last_data.minute_walk.blank?
+      @property.nearest_stations.build
+    end
+  end
 
   def update
-    if @property.update(property_params)
+    if @property.update(property_params_update)
       redirect_to properties_path
     else
       render :edit
@@ -46,10 +51,23 @@ class PropertiesController < ApplicationController
       :age,
       :note,
       nearest_stations_attributes: [:line, :station, :minute_walk]
-  )
+    )
+  end
+
+  def property_params_update
+    params.require(:property).permit(
+      :name,
+      :cost,
+      :address,
+      :age,
+      :note,
+      nearest_stations_attributes: [:line, :station, :minute_walk, :id_destroy, :id]
+    )
   end
 
   def set_property
     @property = Property.find(params[:id])
   end
+
+
 end
