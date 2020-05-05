@@ -50,7 +50,7 @@ class PropertiesController < ApplicationController
       :address,
       :age,
       :note,
-      nearest_stations_attributes: [:line, :station, :minute_walk]
+      nearest_stations_attributes: %i(line station minute_walk)
     )
   end
 
@@ -61,7 +61,7 @@ class PropertiesController < ApplicationController
       :address,
       :age,
       :note,
-      nearest_stations_attributes: [:line, :station, :minute_walk, :id_destroy, :id]
+      nearest_stations_attributes: %i(line station minute_walk id_destroy id)
     )
   end
 
